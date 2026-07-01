@@ -16,41 +16,118 @@
       place-items: center;
     }
 
-    .loader {
-      text-align: center;
+    .login-card {
+      width: 380px;
+      background: #ffffff;
+      border: 1px solid #dbe4ef;
+      border-radius: 22px;
+      padding: 34px;
+      box-shadow: 0 16px 40px rgba(15, 35, 70, 0.10);
     }
 
-    .loader h1 {
-      margin: 0 0 10px;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 26px;
+      font-weight: 900;
+      font-size: 22px;
+      color: #10223d;
+    }
+
+    .logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background: #10223d;
+      color: #ffffff;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+    }
+
+    h1 {
+      margin: 0 0 8px;
       font-size: 28px;
+      letter-spacing: -0.5px;
     }
 
-    .loader p {
-      margin: 0 0 20px;
+    p {
+      margin: 0 0 24px;
       color: #64748b;
+      line-height: 1.45;
+    }
+
+    .field {
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      font-weight: 800;
+      margin-bottom: 7px;
+      font-size: 13px;
+      color: #334155;
+    }
+
+    input {
+      width: 100%;
+      height: 46px;
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      padding: 0 14px;
+      font-size: 15px;
+      box-sizing: border-box;
     }
 
     .btn {
-      display: inline-block;
+      display: block;
+      width: 100%;
+      text-align: center;
       background: #10223d;
-      color: #ffffff;
-      padding: 12px 18px;
-      border-radius: 12px;
+      color: white;
       text-decoration: none;
-      font-weight: 800;
+      padding: 14px;
+      border-radius: 12px;
+      font-weight: 900;
+      margin-top: 10px;
+      box-sizing: border-box;
+    }
+
+    .note {
+      margin-top: 18px;
+      font-size: 13px;
+      color: #64748b;
+      line-height: 1.45;
     }
   </style>
-
-  <script>
-    window.location.replace("/dashboard.html");
-  </script>
 </head>
 
 <body>
-  <div class="loader">
-    <h1>Opening Meeting Intelligence</h1>
-    <p>Please wait...</p>
-    <a class="btn" href="/dashboard.html">Open Dashboard</a>
-  </div>
+  <main class="login-card">
+    <div class="brand">
+      <div class="logo">R</div>
+      <span>Rob Command Center</span>
+    </div>
+
+    <h1>Demo Login</h1>
+    <p>Access the Meeting Intelligence dashboard.</p>
+
+    <div class="field">
+      <label>Email</label>
+      <input value="rob@lbrookehomes.com" />
+    </div>
+
+    <div class="field">
+      <label>Password</label>
+      <input type="password" value="demo12345" />
+    </div>
+
+    <a class="btn" href="/dashboard">Open Dashboard</a>
+
+    <div class="note">
+      Demo only. Live integrations will connect later.
+    </div>
+  </main>
 </body>
 </html>
