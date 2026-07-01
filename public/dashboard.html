@@ -4,13 +4,16 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Rob Latest Updates Demo</title>
-  <link rel="stylesheet" href="/styles.css" />
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      font-family: Inter, Arial, sans-serif;
-      background: #f3f6fb;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f7fb;
       color: #071b3a;
     }
 
@@ -20,44 +23,47 @@
     }
 
     .sidebar {
-      width: 260px;
+      width: 280px;
       background: #10223d;
-      color: white;
+      color: #ffffff;
       padding: 28px 24px;
-      position: sticky;
+      position: fixed;
+      left: 0;
       top: 0;
-      height: 100vh;
-      box-sizing: border-box;
+      bottom: 0;
     }
 
     .side-brand {
       display: flex;
-      gap: 12px;
+      gap: 14px;
       align-items: center;
-      margin-bottom: 40px;
-      font-weight: 800;
-      line-height: 1.2;
+      margin-bottom: 42px;
+      font-weight: 900;
+      font-size: 22px;
+      line-height: 1.15;
     }
 
     .logo {
-      width: 38px;
-      height: 38px;
-      border-radius: 12px;
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
       background: #ffffff;
       color: #10223d;
       display: grid;
       place-items: center;
       font-weight: 900;
+      flex: 0 0 auto;
     }
 
     .nav a {
       display: block;
-      color: white;
+      color: #ffffff;
       text-decoration: none;
-      font-weight: 800;
+      font-weight: 900;
       padding: 18px 20px;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.12);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.12);
+      font-size: 17px;
     }
 
     .sidebar-footer {
@@ -65,77 +71,87 @@
       bottom: 28px;
       left: 24px;
       right: 24px;
-      font-size: 13px;
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.14);
       color: #cbd6e8;
+      font-size: 14px;
       line-height: 1.5;
     }
 
     .sidebar-footer b {
+      color: #ffffff;
       display: block;
-      color: white;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
 
     .main {
-      flex: 1;
-      padding: 36px;
-      box-sizing: border-box;
+      width: calc(100% - 280px);
+      margin-left: 280px;
+      padding: 34px 38px 54px;
     }
 
     .topbar {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      margin-bottom: 26px;
+      gap: 24px;
+      margin-bottom: 24px;
     }
 
     h1 {
-      font-size: 42px;
-      margin: 0 0 8px;
+      margin: 0;
+      font-size: 40px;
+      line-height: 1.05;
       letter-spacing: -1px;
     }
 
     .subtitle {
-      margin: 0;
+      margin: 8px 0 0;
       color: #66758c;
-      font-size: 18px;
+      font-size: 17px;
     }
 
     .badge {
       background: #dcfce7;
       color: #166534;
       border: 1px solid #9ee6b3;
-      padding: 12px 20px;
+      padding: 11px 18px;
       border-radius: 999px;
-      font-weight: 800;
+      font-weight: 900;
       font-size: 14px;
+      white-space: nowrap;
     }
 
     .grid {
       display: grid;
-      gap: 22px;
-      margin-bottom: 22px;
+      gap: 20px;
+      margin-bottom: 20px;
     }
 
     .cols-2 {
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 1.15fr 0.85fr;
     }
 
-    .cols-3 {
-      grid-template-columns: repeat(3, 1fr);
+    .cols-2-even {
+      grid-template-columns: 1fr 1fr;
     }
 
     .card {
-      background: white;
+      background: #ffffff;
       border: 1px solid #dbe4ef;
       border-radius: 22px;
-      padding: 26px;
-      box-shadow: 0 12px 30px rgba(15, 35, 70, 0.06);
+      padding: 24px;
+      box-shadow: 0 10px 26px rgba(15, 35, 70, 0.06);
+      min-height: auto;
     }
 
+    .card h2,
     .card h3 {
-      margin: 0 0 18px;
+      margin: 0 0 16px;
       font-size: 24px;
+      line-height: 1.2;
     }
 
     .card h4 {
@@ -144,16 +160,16 @@
     }
 
     .summary {
-      font-size: 17px;
-      line-height: 1.65;
-      color: #243750;
       margin: 0;
+      color: #243750;
+      font-size: 16px;
+      line-height: 1.6;
     }
 
     .input-meta {
       display: flex;
-      gap: 10px;
       flex-wrap: wrap;
+      gap: 10px;
       margin-bottom: 18px;
     }
 
@@ -163,7 +179,7 @@
       color: #1d4ed8;
       padding: 8px 12px;
       border-radius: 999px;
-      font-weight: 800;
+      font-weight: 900;
       font-size: 13px;
     }
 
@@ -179,24 +195,27 @@
       color: #15803d;
     }
 
-    .task-list,
-    .email-list,
-    .meeting-list,
-    .checklist {
+    .list {
       display: flex;
       flex-direction: column;
       gap: 12px;
     }
 
     .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 14px;
       border: 1px solid #dbe4ef;
       background: #f9fbff;
       border-radius: 16px;
-      padding: 16px;
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      align-items: flex-start;
+      padding: 15px;
+    }
+
+    .row b {
+      display: block;
+      font-size: 15px;
+      line-height: 1.25;
     }
 
     .row span {
@@ -215,7 +234,14 @@
       border: 1px solid #fed7aa;
       border-radius: 999px;
       font-size: 12px;
-      font-weight: 800;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .status.green {
+      background: #ecfdf5;
+      color: #15803d;
+      border-color: #bbf7d0;
     }
 
     .btn {
@@ -227,6 +253,7 @@
       background: #0f62fe;
       color: white;
       white-space: nowrap;
+      font-size: 13px;
     }
 
     .btn.secondary {
@@ -239,12 +266,22 @@
       border: 1px solid #d6e4ff;
     }
 
+    .btn.success {
+      background: #15803d;
+    }
+
     .trello-box {
       border: 1px dashed #94a3b8;
       border-radius: 18px;
       padding: 18px;
       background: #f8fafc;
-      margin-top: 12px;
+      margin-top: 14px;
+      color: #243750;
+      line-height: 1.5;
+    }
+
+    .trello-box p {
+      margin: 8px 0 0;
     }
 
     .draft-box {
@@ -253,28 +290,64 @@
       border-radius: 18px;
       padding: 20px;
       line-height: 1.55;
-      min-height: 170px;
+      min-height: 210px;
     }
 
     .draft-box p {
       color: #dbeafe;
-      margin: 8px 0 0;
+      margin: 10px 0 0;
     }
 
     .small-note {
       font-size: 13px;
       color: #64748b;
-      margin-top: 10px;
+      margin: 12px 0 0;
+      line-height: 1.4;
+    }
+
+    .check-row {
+      align-items: center;
+    }
+
+    input[type="checkbox"] {
+      width: 22px;
+      height: 22px;
+      accent-color: #10223d;
+      flex: 0 0 auto;
     }
 
     @media (max-width: 1100px) {
+      .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+      }
+
+      .sidebar-footer {
+        position: relative;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        margin-top: 28px;
+      }
+
+      .app {
+        display: block;
+      }
+
+      .main {
+        width: 100%;
+        margin-left: 0;
+        padding: 24px;
+      }
+
       .cols-2,
-      .cols-3 {
+      .cols-2-even {
         grid-template-columns: 1fr;
       }
 
-      .sidebar {
-        width: 220px;
+      .topbar {
+        flex-direction: column;
       }
     }
   </style>
@@ -285,7 +358,7 @@
     <aside class="sidebar">
       <div class="side-brand">
         <div class="logo">R</div>
-        <span>Rob Command<br/>Center</span>
+        <span>Rob Command<br />Center</span>
       </div>
 
       <nav class="nav">
@@ -294,7 +367,7 @@
 
       <div class="sidebar-footer">
         <b>Visual Prototype</b>
-        <span>Demo view only. Real integrations will connect later.</span>
+        <span>Simple demo view only. Real integrations will connect later.</span>
       </div>
     </aside>
 
@@ -302,7 +375,7 @@
       <section class="topbar">
         <div>
           <h1>Latest Updates</h1>
-          <p class="subtitle">Simple command view for Rob after each meeting.</p>
+          <p class="subtitle">A simple command view for Rob after each meeting.</p>
         </div>
         <div class="badge">Demo Mode</div>
       </section>
@@ -326,7 +399,7 @@
         <div class="card">
           <h3>Important Pointers</h3>
 
-          <div class="task-list">
+          <div class="list">
             <div class="row">
               <div>
                 <b>Budget is not ready yet</b>
@@ -354,11 +427,11 @@
         </div>
       </section>
 
-      <section class="grid cols-2">
+      <section class="grid cols-2-even">
         <div class="card">
           <h3>Next Action Tasks</h3>
 
-          <div class="task-list">
+          <div class="list">
             <div class="row">
               <div>
                 <b>Schedule designer measurement visit</b>
@@ -396,8 +469,8 @@
         <div class="card">
           <h3>Rob’s Own Checklist</h3>
 
-          <div class="checklist">
-            <label class="row">
+          <div class="list">
+            <label class="row check-row">
               <div>
                 <b>Review meeting summary</b>
                 <span>Confirm the AI understood the project correctly.</span>
@@ -405,7 +478,7 @@
               <input type="checkbox" />
             </label>
 
-            <label class="row">
+            <label class="row check-row">
               <div>
                 <b>Approve Trello lead card</b>
                 <span>Create the card only if Rob confirms.</span>
@@ -413,7 +486,7 @@
               <input type="checkbox" />
             </label>
 
-            <label class="row">
+            <label class="row check-row">
               <div>
                 <b>Send internal emails</b>
                 <span>Ask the right team members to move next steps forward.</span>
@@ -424,11 +497,11 @@
         </div>
       </section>
 
-      <section class="grid cols-2">
+      <section class="grid cols-2-even">
         <div class="card">
           <h3>Next Meetings</h3>
 
-          <div class="meeting-list">
+          <div class="list">
             <div class="row">
               <div>
                 <b>Designer Measurement Visit</b>
@@ -476,11 +549,11 @@
         </div>
       </section>
 
-      <section class="grid cols-2">
+      <section class="grid cols-2-even">
         <div class="card">
           <h3>Google Email View</h3>
 
-          <div class="email-list">
+          <div class="list">
             <div class="row">
               <div>
                 <b>Colleen — Interior Designer</b>
@@ -526,12 +599,10 @@
           </div>
 
           <br />
-          <button class="btn secondary">Send Email via Portal</button>
-          <p class="small-note">Demo button only. Real sending will connect through Gmail later.</p>
+          <button class="btn success" onclick="sendEmailDemo()">Send Email via Portal</button>
+          <p id="send-message" class="small-note">Demo button only. Real sending will connect through Gmail later.</p>
         </div>
       </section>
-
-      <div style="height: 40px;"></div>
     </main>
   </div>
 
@@ -541,23 +612,40 @@
         "Demo: Trello card preview approved. In the real version, this will create the card in the New Leads board.";
     }
 
+    function sendEmailDemo() {
+      document.getElementById("send-message").innerText =
+        "Demo: Email approved. In the real version, this will send through Rob’s connected Gmail account.";
+    }
+
     function writeEmail(person) {
       const drafts = {
         colleen: {
           subject: "Robbinsville lead — measurement and layout review",
-          body: "Hi Colleen,\\n\\nWe had a walkthrough for the Robbinsville property. Can you review the scope and help plan the measurement visit? Main areas are kitchen relocation, primary suite options, basement investigation, floors, stairs, and lighting.\\n\\nThanks,\\nRob"
+          body:
+            "Hi Colleen,\\n\\n" +
+            "We had a walkthrough for the Robbinsville property. Can you review the scope and help plan the measurement visit? Main areas are kitchen relocation, primary suite options, basement investigation, floors, stairs, and lighting.\\n\\n" +
+            "Thanks,\\nRob"
         },
         penny: {
           subject: "New lead to track — Robbinsville",
-          body: "Hi Penny,\\n\\nPlease add the Robbinsville opportunity as a new lead and track the next steps. We need a designer measurement visit before any formal pricing is prepared.\\n\\nThanks,\\nRob"
+          body:
+            "Hi Penny,\\n\\n" +
+            "Please add the Robbinsville opportunity as a new lead and track the next steps. We need a designer measurement visit before any formal pricing is prepared.\\n\\n" +
+            "Thanks,\\nRob"
         },
         stan: {
           subject: "Robbinsville layout support",
-          body: "Hi Stan,\\n\\nWe may need support creating layout options for the Robbinsville project. The key areas are kitchen relocation, upstairs primary suite, and basement possibilities.\\n\\nThanks,\\nRob"
+          body:
+            "Hi Stan,\\n\\n" +
+            "We may need support creating layout options for the Robbinsville project. The key areas are kitchen relocation, upstairs primary suite, and basement possibilities.\\n\\n" +
+            "Thanks,\\nRob"
         },
         jess: {
           subject: "Robbinsville budget prep",
-          body: "Hi Jess,\\n\\nPlease be aware of a new Robbinsville renovation lead. Budget is not ready yet, but once measurements and layout options are complete, we may need help preparing a budget range.\\n\\nThanks,\\nRob"
+          body:
+            "Hi Jess,\\n\\n" +
+            "Please be aware of a new Robbinsville renovation lead. Budget is not ready yet, but once measurements and layout options are complete, we may need help preparing a budget range.\\n\\n" +
+            "Thanks,\\nRob"
         }
       };
 
