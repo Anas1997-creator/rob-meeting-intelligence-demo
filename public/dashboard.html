@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rob Command Center Demo</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="side-brand"><div class="logo">R</div><span>Rob Command<br/>Center</span></div>
+      <nav class="nav">
+        <a class="active" href="#overview">Dashboard</a>
+        <a href="#meeting">Meeting Intelligence</a>
+        <a href="#approvals">Approval Queue</a>
+        <a href="#trello">Trello Preview</a>
+        <a href="#summary">Daily Summary</a>
+      </nav>
+      <div class="sidebar-footer">
+        <b>Visual Prototype</b>
+        <span>No live Airtable, Trello, Claude, or n8n integration yet.</span>
+      </div>
+    </aside>
+
+    <main class="main">
+      <section class="topbar" id="overview">
+        <div>
+          <h1>Meeting Intelligence Dashboard</h1>
+          <p>Sample project visual for Rob: Kate’s client — Robbinsville.</p>
+        </div>
+        <div class="badge green">Demo Mode</div>
+      </section>
+
+      <div class="note-strip">
+        <b>Presentation purpose:</b> This Railway demo shows how the workflow will look before real integrations are connected. The data below is based on Rob’s sample transcript.
+      </div>
+
+      <section class="stage-flow card">
+        <h3>How the future system works</h3>
+        <div class="steps">
+          <div class="step">Transcript</div><div class="arrow">→</div>
+          <div class="step">n8n Intake</div><div class="arrow">→</div>
+          <div class="step">Claude Analysis</div><div class="arrow">→</div>
+          <div class="step">Approval Screen</div><div class="arrow">→</div>
+          <div class="step">Trello Preview</div><div class="arrow">→</div>
+          <div class="step">Daily Summary</div>
+        </div>
+      </section>
+
+      <section class="grid cols-4 section">
+        <div class="card metric">
+          <div class="label">Classification</div>
+          <div class="value">New Lead</div>
+          <div class="sub">Discovery meeting from Kate / Queenston referral.</div>
+        </div>
+        <div class="card metric">
+          <div class="label">Project</div>
+          <div class="value">Robbinsville</div>
+          <div class="sub">Large home renovation with multiple scope paths.</div>
+        </div>
+        <div class="card metric">
+          <div class="label">Budget Signal</div>
+          <div class="value">$100K–$300K+</div>
+          <div class="sub">Early range only. Not ready for formal pricing.</div>
+        </div>
+        <div class="card metric">
+          <div class="label">Next Step</div>
+          <div class="value">Designer Visit</div>
+          <div class="sub">Amanda or Nicole to measure and create layout options.</div>
+        </div>
+      </section>
+
+      <section class="grid cols-2 section" id="meeting">
+        <div class="card">
+          <h3>AI Meeting Summary</h3>
+          <p class="summary">
+            Rob met with Lisa, her husband, and Tom at the Robbinsville property. The conversation focused on a large renovation opportunity including kitchen relocation, primary suite options, basement investigation, full flooring replacement, stairs, lighting, and Rob’s recommendation to approach the work as a proper gut renovation instead of patchwork fixes.
+          </p>
+          <div class="tag-row">
+            <span class="tag purple">New Lead</span>
+            <span class="tag">Kitchen Relocation</span>
+            <span class="tag">Primary Suite</span>
+            <span class="tag teal">Basement Investigation</span>
+            <span class="tag warn">Pricing Not Ready</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Tools Used in the Future Version</h3>
+          <div class="tools">
+            <div class="tool"><div class="circle blue">P</div>PLAUD</div>
+            <div class="tool"><div class="circle green">G</div>Granola</div>
+            <div class="tool"><div class="circle purple">n8n</div>n8n</div>
+            <div class="tool"><div class="circle orange">C</div>Claude</div>
+            <div class="tool"><div class="circle teal">A</div>Airtable</div>
+            <div class="tool"><div class="circle trello">T</div>Trello</div>
+            <div class="tool"><div class="circle blue">R</div>Railway</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid cols-3 section">
+        <div class="card">
+          <h3>Room-by-Room Scope</h3>
+          <div class="action-list">
+            <div class="action"><div><b>Kitchen</b><span>Relocate to back of house, improve sink/dishwasher flow, add simple island.</span></div><div class="status">Scope</div></div>
+            <div class="action"><div><b>Primary Suite</b><span>Compare first-floor conversion vs. upstairs bedroom improvements with new windows.</span></div><div class="status">Decision</div></div>
+            <div class="action"><div><b>Basement</b><span>Investigate hidden walled-off section and evaluate office/bedroom potential.</span></div><div class="status">Explore</div></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Rob’s Recommendation</h3>
+          <p class="summary">Avoid patchwork. Pull base molding and bad flooring, replace properly with larger planks, and price only after proper space planning.</p>
+          <div class="tag-row">
+            <span class="tag">Full gut philosophy</span>
+            <span class="tag">No patchwork repairs</span>
+            <span class="tag warn">Major budget drivers identified</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Client / People</h3>
+          <div class="action-list">
+            <div class="action"><div><b>Lisa + Husband</b><span>Homeowners, flexible timeline, large family.</span></div><div class="status">Client</div></div>
+            <div class="action"><div><b>Tom</b><span>Brother-in-law, commercial GC. Possible collaboration with his crew.</span></div><div class="status">GC</div></div>
+            <div class="action"><div><b>Kate</b><span>Referral source from Queenston.</span></div><div class="status">Referral</div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid cols-2 section" id="approvals">
+        <div class="card">
+          <h3>Suggested Action Items</h3>
+          <div class="action-list">
+            <div class="action"><div><b>Schedule designer measurement visit</b><span>Owner: Rob · Amanda or Nicole to visit property.</span><div class="approve"><button class="mini-btn primary">Approve</button><button class="mini-btn">Edit</button><button class="mini-btn reject">Reject</button></div></div><div class="status">Pending</div></div>
+            <div class="action"><div><b>Create layout options before pricing</b><span>Owner: Amanda / Nicole · Kitchen, primary suite, basement options.</span><div class="approve"><button class="mini-btn primary">Approve</button><button class="mini-btn">Edit</button><button class="mini-btn reject">Reject</button></div></div><div class="status">Pending</div></div>
+            <div class="action"><div><b>Investigate walled-off basement section</b><span>Owner: Rob / Team · Check what is behind the existing wall.</span><div class="approve"><button class="mini-btn primary">Approve</button><button class="mini-btn">Edit</button><button class="mini-btn reject">Reject</button></div></div><div class="status">Review</div></div>
+            <div class="action"><div><b>Hold formal pricing until layouts are ready</b><span>Owner: Rob · Avoid premature estimate before measurements.</span><div class="approve"><button class="mini-btn primary">Approve</button><button class="mini-btn">Edit</button><button class="mini-btn reject">Reject</button></div></div><div class="status">Recommended</div></div>
+          </div>
+        </div>
+
+        <div class="card" id="trello">
+          <h3>Trello New Lead Card Preview</h3>
+          <div class="kanban">
+            <div class="lane">
+              <h4>New Leads</h4>
+              <div class="ticket"><b>Kate’s Client — Robbinsville</b>New referral from Kate. Large home renovation opportunity.</div>
+              <div class="ticket"><b>Checklist</b>Client details · Schedule designer visit · Create layout options · Review kitchen relocation · Investigate basement.</div>
+            </div>
+            <div class="lane">
+              <h4>Discovery</h4>
+              <div class="ticket"><b>Meeting Summary</b>Transcript processed and scope areas detected.</div>
+              <div class="ticket"><b>Budget Note</b>$100K–$300K+ early range. Formal pricing pending layouts.</div>
+            </div>
+            <div class="lane">
+              <h4>Next Action</h4>
+              <div class="ticket"><b>Designer Measurements</b>Amanda or Nicole to visit and produce layout options.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid cols-2 section" id="summary">
+        <div class="card">
+          <h3>Daily Summary Preview for Rob</h3>
+          <p class="summary">
+            <b>Robbinsville lead:</b> New referral from Kate has been captured and classified as a high-scope renovation lead. Main opportunities include kitchen relocation, upstairs primary suite improvements, basement investigation, floors, stairs, and lighting. Next best action is to schedule Amanda or Nicole for measurements and layout options before giving formal pricing.
+          </p>
+          <div class="tag-row">
+            <span class="tag purple">New lead captured</span>
+            <span class="tag warn">Needs designer visit</span>
+            <span class="tag teal">Trello preview ready</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Original Transcript Snapshot</h3>
+          <div class="transcript-box">Kate’s client - Robbinsville
+
+New client referral from Kate (Queenston); meeting at the Robbinsville property.
+
+Attendees: Lisa and husband (homeowners), Tom (brother-in-law, commercial GC), Rob.
+
+Kitchen: current layout poorly executed; idea to relocate kitchen to back of house, improve sink and dishwasher flow, add simple island.
+
+Primary suite: Option A is first-floor conversion; Option B is upstairs bedroom with windows added for light and views. Rob favors building out the upstairs views.
+
+Basement: hidden walled-off section worth investigating. Possible bedroom or office.
+
+Floors: previous owner layered hardwood poorly. Stairs need full replacement. Lighting can likely be fixed.
+
+Rob’s recommendation: full gut philosophy, not patchwork. Pull base molding and floors, replace correctly with larger planks.
+
+Next steps: bring in designer. Amanda or Nicole to measure and produce layout options before pricing.</div>
+        </div>
+      </section>
+
+      <div class="footer-space"></div>
+    </main>
+  </div>
+</body>
+</html>

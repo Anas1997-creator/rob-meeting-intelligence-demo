@@ -1,0 +1,12 @@
+{
+  "name": "rob-meeting-intelligence-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Visual prototype for Rob's Meeting Intelligence dashboard",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
