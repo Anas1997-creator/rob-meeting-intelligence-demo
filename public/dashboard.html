@@ -138,6 +138,37 @@
       white-space: nowrap;
     }
 
+    /* ---- fetch-from-link bar ---- */
+    .fetch-bar {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .fetch-bar input {
+      flex: 1;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 11px 14px;
+      font-size: 14px;
+      font-family: inherit;
+      color: var(--ink);
+      background: #ffffff;
+    }
+
+    .fetch-bar input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .fetch-bar .btn {
+      flex: 0 0 auto;
+    }
+
+    #fetch-message {
+      margin: 0 0 28px;
+    }
+
     /* ---- section rhythm ---- */
     .section-label {
       text-transform: uppercase;
@@ -435,17 +466,23 @@
         <div class="badge">Demo Mode</div>
       </section>
 
+      <div class="fetch-bar">
+        <input type="text" id="meeting-link" placeholder="Paste a Granola / PLAUD / Google Meet link…" />
+        <button class="btn" onclick="fetchMeetingFromLink()">Fetch Meeting</button>
+      </div>
+      <p id="fetch-message" class="small-note"></p>
+
       <section class="grid cols-2">
         <div class="card-primary">
           <h2>Summary of the Meeting</h2>
 
-          <div class="input-meta">
+          <div class="input-meta" id="summary-pills">
             <span class="pill">Granola / PLAUD / Google Meet</span>
             <span class="pill">New Lead</span>
             <span class="pill">Robbinsville</span>
           </div>
 
-          <p class="summary">
+          <p class="summary" id="summary-text">
             Rob met with Lisa, her husband, and Tom at the Robbinsville property. The opportunity is a large home renovation covering kitchen relocation, primary suite options, basement investigation, floors, stairs, lighting, and a proper gut-renovation approach instead of patchwork repairs.
           </p>
         </div>
@@ -453,7 +490,7 @@
         <div class="card-primary">
           <h2>Important Pointers</h2>
 
-          <div class="list">
+          <div class="list" id="pointers-list">
             <div class="row">
               <div>
                 <b>Budget is not ready yet</b>
@@ -665,6 +702,63 @@
   </div>
 
   <script>
+    const demoMeeting = {
+      source: "Granola / PLAUD / Google Meet",
+      tags: ["New Lead", "Robbinsville"],
+      summary:
+        "Rob met with Lisa, her husband, and Tom at the Robbinsville property. The opportunity is a large home renovation covering kitchen relocation, primary suite options, basement investigation, floors, stairs, lighting, and a proper gut-renovation approach instead of patchwork repairs.",
+      pointers: [
+        {
+          title: "Budget is not ready yet",
+          detail: "Rob floated $100K–$300K+ only as an early range. Formal pricing should wait until measurements and layouts are ready.",
+          status: "Important",
+          alert: true
+        },
+        {
+          title: "Designer visit required",
+          detail: "Amanda or Nicole should visit the property, measure properly, and create layout options.",
+          status: "Next"
+        },
+        {
+          title: "Tom may collaborate",
+          detail: "Tom is a commercial GC and may help with parts of the work through his crew.",
+          status: "Note"
+        }
+      ]
+    };
+
+    function renderMeeting(data) {
+      const pillsEl = document.getElementById("summary-pills");
+      pillsEl.innerHTML =
+        "<span class=\"pill\">" + data.source + "</span>" +
+        data.tags.map(tag => "<span class=\"pill\">" + tag + "</span>").join("");
+
+      document.getElementById("summary-text").innerText = data.summary;
+
+      const pointersEl = document.getElementById("pointers-list");
+      pointersEl.innerHTML = data.pointers
+        .map(
+          p =>
+            "<div class=\"row\"><div><b>" + p.title + "</b><span>" + p.detail + "</span></div>" +
+            "<div class=\"status" + (p.alert ? " alert" : "") + "\">" + p.status + "</div></div>"
+        )
+        .join("");
+    }
+
+    function fetchMeetingFromLink() {
+      const link = document.getElementById("meeting-link").value.trim();
+      const msgEl = document.getElementById("fetch-message");
+
+      if (!link) {
+        msgEl.innerText = "Paste a meeting link above, then click Fetch Meeting.";
+        return;
+      }
+
+      renderMeeting(demoMeeting);
+      msgEl.innerText =
+        "Demo: Fetched meeting from link and refreshed the Summary and Important Pointers below. In the real version, this will pull the actual transcript and populate these fields automatically.";
+    }
+
     function showTrelloMessage() {
       document.getElementById("trello-message").innerText =
         "Demo: Trello card preview approved. In the real version, this will create the card in the New Leads board.";
